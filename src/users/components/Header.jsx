@@ -28,7 +28,7 @@ function Header() {
       <FaInstagram/>
       <FaFacebook className='mx-2'/>
       <FaXTwitter/>
-      <Link to={'/login'} className='flex border rounded px-2 py-1 justify-center hover:bg-white hover:text-black ms-1'><FaUser className='me-1'/> Login</Link>
+      <Link to={'/login'} className='flex border rounded px-2 py-1 justify-center hover:bg-black hover:text-white ms-1'><FaUser className='me-1'/> Login</Link>
 
      </div>
     </div>
