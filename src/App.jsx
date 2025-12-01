@@ -6,7 +6,7 @@ import Profile from './users/pages/Profile'
 import View from './users/pages/View'
 import Auth from './Pages/Auth'
 import Pnf from './Pages/Pnf'
-import AdminHome from './admin/pages/AdminHome'
+import AdminHome from './admin/pages/Adminhome'
 import AdminCollection from './admin/pages/AdminCollection'
 import AdminProfile from './admin/pages/AdminProfile'
 
@@ -33,7 +33,7 @@ function App() {
       <Route path='/book' element={<Book/>}/>
 
       <Route path='/user/profile' element={<Profile/>}/>
-      <Route path='/books/:id/view' element={<View/>}/>
+      <Route path='/book/:id/view' element={<View/>}/>
 
       <Route path='/admin/home' element={<AdminHome/>}/>
       <Route path='/admin/profile' element={<AdminProfile/>}/>

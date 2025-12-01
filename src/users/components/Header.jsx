@@ -29,8 +29,7 @@ function Header() {
       <FaFacebook className='mx-2'/>
       <FaXTwitter/>
       <Link to={'/login'} className='flex border rounded px-2 py-1 justify-center hover:bg-black hover:text-white ms-1'><FaUser className='me-1'/> Login</Link>
-
-     </div>
+      </div>
     </div>
    {/* lower part link& menu + login button */}
    <nav className="w-full p-2 bg-black text-white md:flex justify-center items-center">

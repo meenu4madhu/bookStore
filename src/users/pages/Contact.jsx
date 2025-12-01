@@ -39,6 +39,7 @@ function Contact() {
       </textarea>
       <button type='button' className='w-full p-2 bg-blue-900 rounded me-5 text-white flex flex-row justify-center'>Send<LiaTelegramPlane className='ms-1 mt-1' /></button>
       </div>
+      {/* map */}
       <div className='flex flex-col  w-150 rounded '>
       <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9810286902324!2d-73.99106972395762!3d40.733259737155224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2599c36e3e86f%3A0xcedaa6b8b3da8932!2sStrand%20Book%20Store!5e0!3m2!1sen!2sin!4v1700001111111"

@@ -26,7 +26,7 @@ function Home() {
       {/* new arrival */}
       <section className='md:px-40 p-5 my-5 flex flex-col justify-center items-center'>
       <h1 className="text-3xl font-bold">NEW ARRIVALS</h1>
-      <h2 className="text-2xl">Explore Our Ltest Collections</h2>
+      <h2 className="text-2xl">Explore Our Latest Collections</h2>
       {/* book row and col */}
       <div className="md:grid grid-cols-4 w-full mt-10 ">
         <div className="shadow rounded p-3 mx-4 mb-5 md:mb-0">
@@ -86,9 +86,9 @@ function Home() {
       <section className='md:px-40 p-5 my-5 flex flex-col justify-center items-center'>
       <h1 className="text-3xl font-bold">TESTIMONIALS</h1>
       <h2 className="text-2xl">See What Others Are Saying</h2>
-      <div className="my-5 flex justify-content-center items-center flex-col">
+      <div className="my-5 flex justify-center items-center flex-col">
         {/* user img */}
-        <img width={'200px'} height={'200px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg" alt="" />
+        <img width={'200px'} height={'200px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg" alt="person" />
         {/* feedback */}
         <p className='mt-5'>Lucas Alexander</p>
         <p className="text-justify mt-4"><span className='font-bold me-2'>"Amazing stories await you in this book, capturing your imagination from the very first page"</span>The writing is clear and easy to follow, and the author has done an excellent job of building strong characters and a meaningful storyline. The plot moves at a good pace, keeping the reader interested throughout. What I liked most is how the book blends emotion with real-life lessons, making it both enjoyable and thought-provoking. Overall, it’s a well-written book that leaves a lasting impression and is definitely worth reading.Another standout element of the book is the way it connects with the reader on a personal level. The themes are relatable, and the author’s message is delivered in a meaningful and impactful way. The book encourages you to reflect on your own experiences, making the reading journey both enjoyable and enriching. Overall, it’s a well-crafted work that stays with you even after you finish reading."</p>
