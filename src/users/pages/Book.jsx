@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../../components/Footer'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { getAllBooksPageAPI } from '../../services/allAPI'
+import { searchContext } from '../../contextAPI/ShareContext'
 
 
 function Book() {
+  const {searchKey,setSearchKey} = useContext(searchContext)
   const [showcategoryList,setshowcategoryList]=useState(false)
   const [token,setToken] = useState("")
   const [allBooks,setAllBooks] = useState([])
+  const [allCategory,setAllCategory]=useState([])
+  const [tempAllBooks,setTempAllBooks]=useState([])
   console.log(allBooks);
   
   useEffect(()=>{
@@ -18,22 +22,35 @@ function Book() {
       setToken(userToken)
       getAllBooks(userToken)
     }
-  },[])
+  },[searchKey])
 
   const getAllBooks = async(token)=>{
     const reqHeader = {
       "Authorization":`Bearer ${token}` 
     }
-    const result =  await getAllBooksPageAPI(reqHeader)
+    const result =  await getAllBooksPageAPI(reqHeader,searchKey)
     if(result.status==200){
       setAllBooks(result.data)
+      setTempAllBooks(result.data)
+      const tempAllCategory=result.data?.map(item=>item.category)
+      const tempCategorySet= new Set(tempAllCategory)
+      console.log([...tempCategorySet]);
+      setAllCategory([...tempCategorySet])
+      
     }else{
       
       console.log(result);
       
     }
   }
- 
+ const filterBooks = (category)=>{
+    if(category=="all"){
+      setAllBooks(tempAllBooks)
+    }
+    else{
+      setAllBooks(tempAllBooks?.filter(item=>item.category==category))    }
+ }
+  
   return (
     <>
       <Header/>
@@ -49,6 +66,8 @@ function Book() {
         {/* search box */}
         <div className="flex my-5">
           <input 
+            value={searchKey}
+            onChange={e=>setSearchKey(e.target.value)}
             type="text" 
             placeholder="Search by title" 
             className="border p-2 border-gray-400 w-100" 
@@ -69,14 +88,19 @@ function Book() {
           <div className={showcategoryList?"block":"md:block hidden"}>
             {/* category1 */}
              <div className="mt-3">
-              <input type="radio" name="filter" id="all"  />
+              <input onClick={()=>filterBooks("all")} type="radio" name="filter" id="all"  />
               <label htmlFor="all" className='ms-3'>All</label>
             </div>
            {/* book category */}
-            <div className="mt-3">
-              <input type="radio" name="filter" id="demo"  />
-              <label htmlFor="demo" className='ms-3'>Category Name</label>
+           {
+            allCategory?.map((category,index)=>(
+               <div key={index} className="mt-3">
+              <input onClick={()=>filterBooks(category)} type="radio" name="filter" id={category}  />
+              <label htmlFor={category} className='ms-3'>{category}</label>
             </div>
+            ))
+         
+            }
           </div>
         </div>
         {/* book row */}
@@ -95,7 +119,7 @@ function Book() {
           </div>
               ))
               :
-              <p className='font-bold'>Loading.....</p>
+              <p className='font-bold'>Book Not Found.....</p>
            
          }
         
