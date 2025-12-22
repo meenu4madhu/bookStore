@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { FaAddressCard, FaFacebook, FaInstagram, FaPowerOff, FaTwitter, FaUser } from 'react-icons/fa'
 import { FaBars, FaXTwitter } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
   const [listStatus,setlistStatus]=useState(false)
   const [dp,setDp]=useState("")
   const [token,setToken]= useState("")
   const [dropDown,setDropDown] = useState(false)
+  const navigate = useNavigate()
   console.log(dp);
   
   useEffect(()=>{
@@ -18,6 +19,16 @@ function Header() {
     setDp(user.picture)
     }
   },[token])
+
+  const logout =()=>{
+    sessionStorage.clear()
+    setToken("")
+    setDp("")
+    setDropDown(false)
+    setlistStatus(false)
+    navigate('/')
+
+  }
 
   const menubtnClicked=()=>{
     setlistStatus(!listStatus)

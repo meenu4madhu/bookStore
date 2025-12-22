@@ -48,3 +48,8 @@ return await commonAPI("GET",`${serverURL}/user-books/bought`,{},reqHeader)
 export const viewBookAPI = async (reqHeader,id)=>{
 return await commonAPI("GET",`${serverURL}/books/${id}/view`,{},reqHeader)
 }
+
+// user/:id/edit :put request ''edit'' when update button clicked
+export const editUserAPI = async(id,reqBody,reqHeader)=>{
+    return await commonAPI("PUT",`${serverURL}/user/${id}/edit`,reqBody,reqHeader)
+}

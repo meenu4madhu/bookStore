@@ -26,7 +26,7 @@ function Edit() {
                   
                   <label htmlFor="uploadimg">
                     <input type="file" id="uploadimg" hidden />
-                    <img width={'150px'} height={'150px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg" alt="person" />
+                    <img width={'100px'} height={'100px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg" alt="person" />
                     <FaPen className='ms-25 text-red-700 text-2xl' style={{marginTop:'-30px'}}/>
                   </label>
                
