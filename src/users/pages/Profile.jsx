@@ -6,6 +6,7 @@ import Edit from '../components/Edit'
 import Sellbook from '../components/Sellbook'
 import Purchase from '../components/Purchase'
 import Bookstatus from '../components/Bookstatus'
+import serverURL from '../../services/serverURL'
 
 
 function Profile() {
@@ -31,7 +32,7 @@ function Profile() {
     <div style={{height:'200px'}} className="bg-black"></div>
     {/* profile img */}
     <div style={{width:'230px',height:'230px',borderRadius:'50%',marginLeft:'70px',marginTop:'-130px'}} className="bg-white p-3">
-      <img style={{width:'200px',height:'200px' ,borderRadius:'50%'}} src={dp?dp:"https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg"} alt="profile" />
+      <img style={{width:'200px',height:'200px' ,borderRadius:'50%'}} src={dp?dp.startsWith("https://lh3.googleusercontent.com/") ?dp:`${serverURL}/uploads/${dp}`:"https://png.pngtree.com/png-vector/20211007/ourmid/pngtree-casual-stylish-fashionable-people-icon-in-flat-style-png-image_3974718.png"}  alt="profile" />
     </div>
     {/* name with edit block */}
     <div className="md:flex  justify-between items-center px-20 my-5">

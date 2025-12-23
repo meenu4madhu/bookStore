@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaAddressCard, FaFacebook, FaInstagram, FaPowerOff, FaTwitter, FaUser } from 'react-icons/fa'
 import { FaBars, FaXTwitter } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
+import serverURL from '../../services/serverURL'
 
 function Header() {
   const [listStatus,setlistStatus]=useState(false)
@@ -60,7 +61,7 @@ function Header() {
            :
     <div className="relative inline-block text-left ms-2">
     <button onClick={()=>setDropDown(!dropDown)} className="w-full bg-white px-3 py-2 shadow-xs hover:bg-gray-200">
-    <img width={'40px'} height={'40px'} style={{borderRadius:'50%'}} src={dp?dp:"https://png.pngtree.com/png-vector/20211007/ourmid/pngtree-casual-stylish-fashionable-people-icon-in-flat-style-png-image_3974718.png"} alt="profile pic" />
+    <img width={'40px'} height={'40px'} style={{borderRadius:'50%'}} src={dp?dp.startsWith("https://lh3.googleusercontent.com/") ?dp:`${serverURL}/uploads/${dp}`:"https://png.pngtree.com/png-vector/20211007/ourmid/pngtree-casual-stylish-fashionable-people-icon-in-flat-style-png-image_3974718.png"} alt="profile pic" />
     </button>
     {
        dropDown &&
