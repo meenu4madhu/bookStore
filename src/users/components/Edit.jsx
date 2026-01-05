@@ -3,6 +3,8 @@ import { FaEdit, FaPen } from 'react-icons/fa'
 import { FaX } from 'react-icons/fa6'
 import serverURL from '../../services/serverURL'
 import { ToastContainer, toast } from 'react-toastify';
+import { editUserAPI } from '../../services/allAPI';
+import {useNavigate} from 'react-router-dom'
 
 function Edit() {
   const [offCanvasStatus,setoffCanvasStatus]= useState(false)
@@ -13,6 +15,7 @@ function Edit() {
   const [existingPicture,setExistingPicture]=useState("")
   const [preview,setPreview]=useState('')
   const [passwordMatch,setPasswordMatch]=useState(true)
+  const navigate = useNavigate()
   useEffect(()=>{
     if(sessionStorage.getItem("user")){
       const user = JSON.parse(sessionStorage.getItem("user"))
@@ -43,9 +46,39 @@ setPreview(url)
     toast.info("Please fill all the fields!!")
     }
     else{
-  alert("API call")
+  const token = sessionStorage.getItem("token")
+  if(token)
+  {
+    const reqHeader = {
+    "Authorization": `Bearer ${token}`
+     }
+  
+  const reqBody = new FormData()
+  for(let key in userDetails){
+    if(key!="picture")
+    {
+      reqBody.append(key,userDetails[key])
+    }
+    else{
+    preview ? reqBody.append("picture",userDetails.picture):reqBody.append("picture",existingPicture)
     }
   }
+
+  const result = await editUserAPI(id,reqBody,reqHeader)
+  if(result.status==200)
+  {
+    toast.success("Profile Updated Successfully..........Please login with new password...")
+  setTimeout(() => {
+    navigate('/login')
+  }, 2000);
+  }else{
+      console.log(result);
+      toast.error("Something went wrong!!!")
+    }
+      
+    }
+  }
+}
 
   return (
     <div>

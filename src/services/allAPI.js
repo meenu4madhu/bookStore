@@ -51,5 +51,30 @@ return await commonAPI("GET",`${serverURL}/books/${id}/view`,{},reqHeader)
 
 // user/:id/edit :put request ''edit'' when update button clicked
 export const editUserAPI = async(id,reqBody,reqHeader)=>{
-    return await commonAPI("PUT",`${serverURL}/user/${id}/edit`,reqBody,reqHeader)
+return await commonAPI("PUT",`${serverURL}/user/${id}/edit`,reqBody,reqHeader)
+}
+
+// /admin-books/all : bookpage api - called by admin-resources component  when page loads -authorised user
+export const getAllAdminBooksAPI = async (reqHeader)=>{
+return await commonAPI("GET",`${serverURL}/admin-books/all`,{},reqHeader)
+}
+
+// /admin-users/all : userpage api - called by admin-resources-user component  when tag2 open
+export const getAllAdminUsersAPI = async (reqHeader)=>{
+return await commonAPI("GET",`${serverURL}/admin-users/all`,{},reqHeader)
+}
+
+// /put req by 
+export const updateBookStatusAPI = async(id,reqHeader)=>{
+return await commonAPI("PUT",`${serverURL}/books/${id}/update`,{},reqHeader)
+}
+
+// delete book
+export const removeBookAPI = async(id,reqHeader)=>{
+return await commonAPI("DELETE",`${serverURL}/books/${id}`,{},reqHeader)
+}
+
+// put req by view component when click buy button 
+export const purchaseBookAPI = async(id,reqHeader)=>{
+return await commonAPI("PUT",`${serverURL}/books/${id}/buy`,{},reqHeader)
 }

@@ -13,12 +13,16 @@ import AdminProfile from './admin/pages/AdminProfile'
 
 import { Route, Routes } from 'react-router-dom'
 import Preloader from './components/Preloader'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import PaymentSuccess from './users/pages/PaymentSuccess'
+import PaymentError from './users/pages/PaymentError'
+import Purchase from './users/components/Purchase'
+import { routeGuardContext } from './contextAPI/GuardContext'
 
 
 
 function App() {
-
+  const {role,setAuthorised}=useContext(routeGuardContext)
   const [loading,setLoading]=useState(true)
   setTimeout(()=>{
     setLoading(false)
@@ -32,13 +36,28 @@ function App() {
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/book' element={<Book/>}/>
 
+   
+  {
+   role=='user' &&
+    <> 
       <Route path='/user/profile' element={<Profile/>}/>
       <Route path='/book/:id/view' element={<View/>}/>
+      <Route path='/user/payment-success' element={<PaymentSuccess/>}/>
+      <Route path='/user/payment-error' element={<PaymentError/>}/>
+    </> 
+    
+  }
 
+  { 
+     role=='admin' &&
+      <>
       <Route path='/admin/home' element={<AdminHome/>}/>
       <Route path='/admin/profile' element={<AdminProfile/>}/>
       <Route path='/admin/resources' element={<AdminCollection/>}/>
-
+      </>
+      
+  }
+     
       <Route path='/*' element={<Pnf/>}/>
      </Routes>
     </>
